@@ -25,7 +25,7 @@ Data_t dataset[] = {
     {FAIL}
 };
 
-int getDataCount(int data_type, int *count, int value, int data_class)
+int getDataCountForClass(int data_type, int *count, int value, int data_class)
 {
     int ret = SUCCEED;
     int i;
@@ -74,13 +74,64 @@ int getDataCount(int data_type, int *count, int value, int data_class)
     return ret;
 }
 
+int getDataCount(int data_type, int *count, int value)
+{
+    int ret = SUCCEED;
+    int i;
+
+    for(i=0; (signed)dataset[i].data_day!=FAIL; i++)
+    {
+        switch (data_type)
+        {
+            case DATA_DAY:
+            {
+                if((signed)dataset[i].data_day==value)
+                {
+                    (*count)++;
+                }
+            } break;
+            case DATA_SEASON:
+            {
+                if((signed)dataset[i].data_season==value)
+                {
+                    (*count)++;
+                }
+            } break;
+            case DATA_WIND:
+            {
+                if((signed)dataset[i].data_wind==value)
+                {
+                    (*count)++;
+                }
+            } break;
+            case DATA_RAIN:
+            {
+                if((signed)dataset[i].data_rain==value)
+                {
+                    (*count)++;
+                }
+            } break;
+            case DATA_CLASS:
+            {
+                if((signed)dataset[i].data_class==value)
+                {
+                    (*count)++;
+                }
+            } break;
+        }
+    }
+    return ret;
+}
+
 int main(void)
 {
     int ret=SUCCEED;
     int count = 0;
+    int count2 = 0;
 
-    ret = getDataCount(DATA_RAIN, &count, HEAVY, ONTIME);
+    ret = getDataCountForClass(DATA_RAIN, &count, HEAVY, ONTIME);
+    ret = getDataCount(DATA_DAY, &count2, WEEKDAY);
 
-    printf("%d", count);
+    printf("%d : %d", count, count2);
     return 0;
 }
