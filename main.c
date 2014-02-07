@@ -36,39 +36,44 @@ int getDataCountForClass(int data_type, int *count, int value, int data_class)
         {
             case DATA_DAY:
             {
-                if((signed)dataset[i].data_day==value && (signed)dataset[i].data_class==data_class)
+                if(ISEAQUALFORCLASS(dataset[i].data_day, value, dataset[i].data_class, data_class))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_SEASON:
             {
-                if((signed)dataset[i].data_season==value && (signed)dataset[i].data_class==data_class)
+                if(ISEAQUALFORCLASS(dataset[i].data_season, value, dataset[i].data_class, data_class))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_WIND:
             {
-                if((signed)dataset[i].data_wind==value && (signed)dataset[i].data_class==data_class)
+                if(ISEAQUALFORCLASS(dataset[i].data_wind, value, dataset[i].data_class, data_class))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_RAIN:
             {
-                if((signed)dataset[i].data_rain==value && (signed)dataset[i].data_class==data_class)
+                if(ISEAQUALFORCLASS(dataset[i].data_rain, value, dataset[i].data_class, data_class))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_CLASS:
             {
-                if((signed)dataset[i].data_class==value && (signed)dataset[i].data_class==data_class)
+                if(ISEAQUALFORCLASS(dataset[i].data_class, value, dataset[i].data_class, data_class))
                 {
                     (*count)++;
                 }
             } break;
+            default:
+            {
+                printf("Wrong data type - return FAIL!");
+                ret=FAIL;
+            }break;
         }
     }
     return ret;
@@ -85,39 +90,44 @@ int getDataCount(int data_type, int *count, int value)
         {
             case DATA_DAY:
             {
-                if((signed)dataset[i].data_day==value)
+                if(ISEAQUAL(dataset[i].data_day, value))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_SEASON:
             {
-                if((signed)dataset[i].data_season==value)
+                if(ISEAQUAL(dataset[i].data_season, value))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_WIND:
             {
-                if((signed)dataset[i].data_wind==value)
+                if(ISEAQUAL(dataset[i].data_wind, value))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_RAIN:
             {
-                if((signed)dataset[i].data_rain==value)
+                if(ISEAQUAL(dataset[i].data_rain, value))
                 {
                     (*count)++;
                 }
             } break;
             case DATA_CLASS:
             {
-                if((signed)dataset[i].data_class==value)
+                if(ISEAQUAL(dataset[i].data_class, value))
                 {
                     (*count)++;
                 }
             } break;
+            default:
+            {
+                printf("Wrong data type - return FAIL!");
+                ret=FAIL;
+            }break;
         }
     }
     return ret;
@@ -132,6 +142,6 @@ int main(void)
     ret = getDataCountForClass(DATA_RAIN, &count, HEAVY, ONTIME);
     ret = getDataCount(DATA_DAY, &count2, WEEKDAY);
 
-    printf("%d : %d", count, count2);
+    printf("ret: %d for class: %d data count: %d\n", ret, count, count2);
     return 0;
 }

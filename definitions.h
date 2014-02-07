@@ -8,6 +8,9 @@
 #define SUCCEED 1
 #define DATACOUNT 20
 
+#define ISEAQUALFORCLASS(a,b,c,d) (signed)a==b && (signed)c==d
+#define ISEAQUAL(a,b) (signed)a==b
+
 typedef enum { DATA_DAY, DATA_SEASON, DATA_WIND, DATA_RAIN, DATA_CLASS } data_type_t;
 
 typedef enum {WEEKDAY, HOLIDAY, SUNDAY, SATURDAY} day_t;
