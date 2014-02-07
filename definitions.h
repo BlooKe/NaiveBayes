@@ -4,6 +4,12 @@
 #endif // DEFINITIONS_H
 
 
+#define FAIL (-1)
+#define SUCCEED 1
+#define DATACOUNT 20
+
+typedef enum { DATA_DAY, DATA_SEASON, DATA_WIND, DATA_RAIN, DATA_CLASS } data_type_t;
+
 typedef enum {WEEKDAY, HOLIDAY, SUNDAY, SATURDAY} day_t;
 typedef enum {WINTER, SPRING, SUMMER, AUTUMN} season_t;
 typedef enum {NONE, NORMAL, HIGH} wind_t;
@@ -16,5 +22,4 @@ typedef struct {
     wind_t data_wind;
     rain_t data_rain;
     class_t data_class;
-
 } Data_t;
