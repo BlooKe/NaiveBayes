@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "definitions.h"
-#include "getfunctions.h"
 #include "typedefs.h"
+#include "getfunctions.h"
+#include "calculations.h"
 
 Data_t dataset[] = {
     { WEEKDAY, SPRING, NONE, NONE_r, ONTIME },
@@ -30,12 +31,10 @@ Data_t dataset[] = {
 int main(void)
 {
     int ret=SUCCEED;
-    int count = 0;
-    int count2 = 0;
+    double probob = 0.0;
 
-    ret = getDataCountForClass(dataset, DATA_RAIN, &count, HEAVY, ONTIME);
-    ret = getDataCount(dataset, DATA_DAY, &count2, WEEKDAY);
+    ret = priorProbability(dataset, (double)DATACOUNT, &probob, DATA_CLASS, CANCELLED);
 
-    printf("ret: %d for class: %d data count: %d\n", ret, count, count2);
+    printf("ret: %d probob: %f \n", ret, probob);
     return 0;
 }

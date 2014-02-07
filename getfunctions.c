@@ -8,7 +8,7 @@
 #include "typedefs.h"
 #include "definitions.h"
 
-int getDataCount(Data_t *dataset, int data_type, int *count, int value)
+int getDataCount(Data_t *dataset, int data_type, double *count, int value)
 {
     int ret = SUCCEED;
     int i;
@@ -62,7 +62,7 @@ int getDataCount(Data_t *dataset, int data_type, int *count, int value)
     return ret;
 }
 
-int getDataCountForClass(Data_t *dataset, int data_type, int *count, int value, int data_class)
+int getDataCountForClass(Data_t *dataset, int data_type, double *count, int value, int data_class)
 {
     int ret = SUCCEED;
     int i;

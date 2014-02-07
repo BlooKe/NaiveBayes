@@ -4,9 +4,11 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.c \
-    getfunctions.c
+    getfunctions.c \
+    calculations.c
 
 HEADERS += \
     definitions.h \
+    typedefs.h \
     getfunctions.h \
-    typedefs.h
+    calculations.h
