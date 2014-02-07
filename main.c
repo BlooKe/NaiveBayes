@@ -32,9 +32,12 @@ int main(void)
 {
     int ret=SUCCEED;
     double probob = 0.0;
+    double minprob = 0.0;
 
-    ret = priorProbability(dataset, (double)DATACOUNT, &probob, DATA_CLASS, CANCELLED);
+    ret = priorProbability(dataset, (double)DATACOUNT, &probob, DATA_CLASS, ONTIME);
+    ret = maxMinorProbability(dataset, &minprob, DATA_CLASS, WEEKDAY, DATA_DAY, ONTIME, SATURDAY);
 
-    printf("ret: %d probob: %f \n", ret, probob);
+    printf("ret: %d probob: %f minprob: %f\n", ret, probob, minprob);
+
     return 0;
 }
