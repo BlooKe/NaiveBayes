@@ -31,13 +31,14 @@ Data_t dataset[] = {
 int main(void)
 {
     int ret=SUCCEED;
-    double probob = 0.0;
-    double minprob = 0.0;
+    Results_t results = { 0.0, 0.0, 0.0, 0.0};
 
-    ret = priorProbability(dataset, (double)DATACOUNT, &probob, DATA_CLASS, ONTIME);
-    ret = maxMinorProbability(dataset, &minprob, DATA_CLASS, WEEKDAY, DATA_DAY, ONTIME, SATURDAY);
 
-    printf("ret: %d probob: %f minprob: %f\n", ret, probob, minprob);
+    ret = naiveBayes(dataset, WEEKDAY, WINTER, HIGH, HEAVY, &results);
+
+
+    printf("On time: %f Late: %f Very Late: %f Cancelled: %f\n",
+           results.ontime, results.late, results.verylate, results.cancelled);
 
     return 0;
 }

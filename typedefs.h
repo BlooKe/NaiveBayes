@@ -17,4 +17,11 @@ typedef struct {
     class_t data_class;
 } Data_t;
 
+typedef struct {
+    double ontime;
+    double late;
+    double verylate;
+    double cancelled;
+} Results_t;
+
 #endif // TYPEDEFS_H
