@@ -3,17 +3,22 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.c \
-    getfunctions.c \
-    calculations.c \
-    fileread.c
+INCLUDEPATH += ./src \
+    ./includes
+
+SOURCES += ./src/main.c \
+    ./src/getfunctions.c \
+    ./src/calculations.c \
+    ./src/fileread.c
 
 HEADERS += \
-    definitions.h \
-    typedefs.h \
-    getfunctions.h \
-    calculations.h \
-    fileread.h
+    ./include/definitions.h \
+    ./include/typedefs.h \
+    ./include/getfunctions.h \
+    ./include/calculations.h \
+    ./include/fileread.h
 
 OTHER_FILES += \
-    data.txt
+    data.txt \
+    LICENSE.md \
+    README.md
