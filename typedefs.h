@@ -1,27 +1,46 @@
+/****************************************************************************
+ * Copyright (c) 2014 Lauris Radzevics                                      *
+ *                                                                          *
+ * Permission is hereby granted, free of charge, to any person obtaining    *
+ * a copy of this software and associated documentation files (the          *
+ * "Software"), to deal in the Software without restriction, including      *
+ * without limitation the rights to use, copy, modify, merge, publish,      *
+ * distribute, sublicense, and/or sell copies of the Software, and to       *
+ * permit persons to whom the Software is furnished to do so, subject to    *
+ * the following conditions:                                                *
+ *                                                                          *
+ * The above copyright notice and this permission notice shall be           *
+ * included in all copies or substantial portions of the Software.          *
+ *                                                                          *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,          *
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF       *
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                    *
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE   *
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION   *
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION    *
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          *
+ ****************************************************************************/
+
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
 
-typedef enum { DATA_DAY, DATA_SEASON, DATA_WIND, DATA_RAIN, DATA_CLASS } data_type_t;
+typedef enum { CLASSNAME, LWEIGHT, LDISTANCE, RWEIGHT, RDISTANCE } data_type_t;
 
-typedef enum {WEEKDAY, HOLIDAY, SUNDAY, SATURDAY} day_t;
-typedef enum {WINTER, SPRING, SUMMER, AUTUMN} season_t;
-typedef enum {NONE, NORMAL, HIGH} wind_t;
-typedef enum {NONE_r, SLIGHT, HEAVY} rain_t;
-typedef enum {ONTIME, LATE, VERYLATE, CANCELLED} class_t;
+typedef enum {LEFT, BALANCE, RIGHT} class_t;
+typedef enum {NONE, ONE, TWO, THREE, FOUR, FIVE} values_t;
 
 typedef struct {
-    day_t data_day;
-    season_t data_season;
-    wind_t data_wind;
-    rain_t data_rain;
-    class_t data_class;
+    int classname;
+    int lweight;
+    int ldistance;
+    int rweight;
+    int rdistance;
 } Data_t;
 
 typedef struct {
-    double ontime;
-    double late;
-    double verylate;
-    double cancelled;
+    double left;
+    double balance;
+    double right;
 } Results_t;
 
 #endif // TYPEDEFS_H

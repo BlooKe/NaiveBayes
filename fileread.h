@@ -21,10 +21,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          *
  ****************************************************************************/
 
-#ifndef GETFUNCTIONS_H
-#define GETFUNCTIONS_H
+#ifndef FILEREAD_H
+#define FILEREAD_H
 
-int getDataCount(Data_t *dataset, int data_type, double *count, int value);
-int getDataCountForClass(Data_t *dataset, int data_type, double *count, int value, int data_class);
+int readfile(char *file_name, Data_t *datastruct, int *datacount);
+int setValue(Data_t *datastruct, int place, char *value);
 
-#endif // GETFUNCTIONS_H
+#endif // FILEREAD_H

@@ -5,10 +5,15 @@ CONFIG -= qt
 
 SOURCES += main.c \
     getfunctions.c \
-    calculations.c
+    calculations.c \
+    fileread.c
 
 HEADERS += \
     definitions.h \
     typedefs.h \
     getfunctions.h \
-    calculations.h
+    calculations.h \
+    fileread.h
+
+OTHER_FILES += \
+    data.txt

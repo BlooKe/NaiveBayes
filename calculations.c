@@ -1,8 +1,25 @@
-/*  *
- *  *
- *  *
- *  *
- *  */
+/****************************************************************************
+ * Copyright (c) 2014 Lauris Radzevics                                      *
+ *                                                                          *
+ * Permission is hereby granted, free of charge, to any person obtaining    *
+ * a copy of this software and associated documentation files (the          *
+ * "Software"), to deal in the Software without restriction, including      *
+ * without limitation the rights to use, copy, modify, merge, publish,      *
+ * distribute, sublicense, and/or sell copies of the Software, and to       *
+ * permit persons to whom the Software is furnished to do so, subject to    *
+ * the following conditions:                                                *
+ *                                                                          *
+ * The above copyright notice and this permission notice shall be           *
+ * included in all copies or substantial portions of the Software.          *
+ *                                                                          *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,          *
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF       *
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                    *
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE   *
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION   *
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION    *
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          *
+ ****************************************************************************/
 
 #include <stdio.h>
 #include "definitions.h"
@@ -33,37 +50,36 @@ int minorProbability(Data_t *dataset, double *retval, int chdatatype, int chdata
 
     return ret;
 }
-double classification (Data_t *dataset, int chdatatype, int chdatavalue, Data_t values)
+double classification (Data_t *dataset, int chdatatype, int chdatavalue, Data_t values, int datacount)
 {
     int ret = SUCCEED;
     double result = 0.0;
     double priprob = 0.0;
-    double minday = 0.0;
-    double minseason = 0.0;
-    double minwind = 0.0;
-    double minrain = 0.0;
+    double minlweight = 0.0;
+    double minldist = 0.0;
+    double minrweight = 0.0;
+    double minrdist = 0.0;
 
-    ret = priorProbability(dataset, (double)DATACOUNT, &priprob, chdatatype, chdatavalue);
-    ret = minorProbability(dataset, &minday, chdatatype, chdatavalue, DATA_DAY, values.data_day);
-    ret = minorProbability(dataset, &minseason, chdatatype, chdatavalue, DATA_SEASON, values.data_season);
-    ret = minorProbability(dataset, &minwind, chdatatype, chdatavalue, DATA_WIND, values.data_wind);
-    ret = minorProbability(dataset, &minrain, chdatatype, chdatavalue, DATA_RAIN, values.data_rain);
+    ret = priorProbability(dataset, datacount, &priprob, chdatatype, chdatavalue);
+    ret = minorProbability(dataset, &minlweight, chdatatype, chdatavalue, LWEIGHT, values.lweight);
+    ret = minorProbability(dataset, &minldist, chdatatype, chdatavalue, LDISTANCE, values.ldistance);
+    ret = minorProbability(dataset, &minrweight, chdatatype, chdatavalue, RWEIGHT, values.rweight);
+    ret = minorProbability(dataset, &minrdist, chdatatype, chdatavalue, RDISTANCE, values.rdistance);
 
-    result = priprob * minday * minseason * minwind * minrain;
+    result = priprob * minlweight * minldist * minrweight * minrdist;
 
     return result;
 }
 
-int naiveBayes(Data_t *dataset, int day, int season, int wind, int rain, Results_t *results)
+int naiveBayes(Data_t *dataset, int lweight, int ldistance, int rweight, int rdistance, Results_t *results, int datacount)
 {
     int ret = SUCCEED;
-    Data_t values = { day, season, wind, rain, FAIL };
+    Data_t values = { FAIL, lweight, ldistance, rweight, rdistance};
 
 
-    results->ontime = classification(dataset, DATA_CLASS, ONTIME, values);
-    results->late = classification(dataset, DATA_CLASS, LATE, values);
-    results->verylate = classification(dataset, DATA_CLASS, VERYLATE, values);
-    results->cancelled = classification(dataset, DATA_CLASS, CANCELLED, values);
+    results->left = classification(dataset, CLASSNAME, LEFT, values, datacount);
+    results->balance = classification(dataset, CLASSNAME, BALANCE, values, datacount);
+    results->right = classification(dataset, CLASSNAME, RIGHT, values, datacount);
 
     return ret;
 }

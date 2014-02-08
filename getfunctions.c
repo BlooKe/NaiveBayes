@@ -1,8 +1,25 @@
-/*  *
- *  *
- *  *
- *  *
- *  */
+/****************************************************************************
+ * Copyright (c) 2014 Lauris Radzevics                                      *
+ *                                                                          *
+ * Permission is hereby granted, free of charge, to any person obtaining    *
+ * a copy of this software and associated documentation files (the          *
+ * "Software"), to deal in the Software without restriction, including      *
+ * without limitation the rights to use, copy, modify, merge, publish,      *
+ * distribute, sublicense, and/or sell copies of the Software, and to       *
+ * permit persons to whom the Software is furnished to do so, subject to    *
+ * the following conditions:                                                *
+ *                                                                          *
+ * The above copyright notice and this permission notice shall be           *
+ * included in all copies or substantial portions of the Software.          *
+ *                                                                          *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,          *
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF       *
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                    *
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE   *
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION   *
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION    *
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          *
+ ****************************************************************************/
 
 #include <stdio.h>
 #include "typedefs.h"
@@ -13,41 +30,41 @@ int getDataCount(Data_t *dataset, int data_type, double *count, int value)
     int ret = SUCCEED;
     int i;
 
-    for(i=0; (signed)dataset[i].data_day!=FAIL; i++)
+    for(i=0; (signed)dataset[i].classname!=FAIL; i++)
     {
         switch (data_type)
         {
-            case DATA_DAY:
+            case CLASSNAME:
             {
-                if(ISEAQUAL(dataset[i].data_day, value))
+                if(ISEAQUAL(dataset[i].classname, value))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_SEASON:
+            case LWEIGHT:
             {
-                if(ISEAQUAL(dataset[i].data_season, value))
+                if(ISEAQUAL(dataset[i].lweight, value))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_WIND:
+            case LDISTANCE:
             {
-                if(ISEAQUAL(dataset[i].data_wind, value))
+                if(ISEAQUAL(dataset[i].ldistance, value))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_RAIN:
+            case RWEIGHT:
             {
-                if(ISEAQUAL(dataset[i].data_rain, value))
+                if(ISEAQUAL(dataset[i].rweight, value))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_CLASS:
+            case RDISTANCE:
             {
-                if(ISEAQUAL(dataset[i].data_class, value))
+                if(ISEAQUAL(dataset[i].rdistance, value))
                 {
                     (*count)++;
                 }
@@ -67,41 +84,41 @@ int getDataCountForClass(Data_t *dataset, int data_type, double *count, int valu
     int ret = SUCCEED;
     int i;
 
-    for(i=0; (signed)dataset[i].data_day!=FAIL; i++)
+    for(i=0; (signed)dataset[i].classname!=FAIL; i++)
     {
         switch (data_type)
         {
-            case DATA_DAY:
+            case CLASSNAME:
             {
-                if(ISEAQUALFORCLASS(dataset[i].data_day, value, dataset[i].data_class, data_class))
+                if(ISEAQUALFORCLASS(dataset[i].classname, value, dataset[i].classname, data_class))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_SEASON:
+            case LWEIGHT:
             {
-                if(ISEAQUALFORCLASS(dataset[i].data_season, value, dataset[i].data_class, data_class))
+                if(ISEAQUALFORCLASS(dataset[i].lweight, value, dataset[i].classname, data_class))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_WIND:
+            case LDISTANCE:
             {
-                if(ISEAQUALFORCLASS(dataset[i].data_wind, value, dataset[i].data_class, data_class))
+                if(ISEAQUALFORCLASS(dataset[i].ldistance, value, dataset[i].classname, data_class))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_RAIN:
+            case RWEIGHT:
             {
-                if(ISEAQUALFORCLASS(dataset[i].data_rain, value, dataset[i].data_class, data_class))
+                if(ISEAQUALFORCLASS(dataset[i].rweight, value, dataset[i].classname, data_class))
                 {
                     (*count)++;
                 }
             } break;
-            case DATA_CLASS:
+            case RDISTANCE:
             {
-                if(ISEAQUALFORCLASS(dataset[i].data_class, value, dataset[i].data_class, data_class))
+                if(ISEAQUALFORCLASS(dataset[i].rdistance, value, dataset[i].classname, data_class))
                 {
                     (*count)++;
                 }
