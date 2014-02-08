@@ -3,8 +3,8 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-INCLUDEPATH += ./src \
-    ./includes
+INCLUDEPATH += \
+    ./include
 
 SOURCES += ./src/main.c \
     ./src/getfunctions.c \

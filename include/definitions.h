@@ -30,4 +30,6 @@
 #define ISEAQUALFORCLASS(a,b,c,d) (signed)a==b && (signed)c==d
 #define ISEAQUAL(a,b) (signed)a==b
 
+#define DATAFILE "/home/blooke/QTprojects/BlooKe-NaiveBayes/data.txt"
+
 #endif // DEFINITIONS_H

@@ -44,7 +44,7 @@ int main(void)
     dataset = (Data_t *)malloc(sizeof(*dataset) * 700);
     memset(dataset, FAIL, sizeof(*dataset)*700);
 
-    ret = readfile("/home/blooke/QTprojects/BlooKe-NaiveBayes/data.txt", dataset, &datacount);
+    ret = readfile(DATAFILE, dataset, &datacount);
 
     ret = naiveBayes(dataset, FIVE, FIVE, ONE, ONE, &results, datacount);
 
