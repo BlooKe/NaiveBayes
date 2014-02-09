@@ -46,7 +46,7 @@ int main(void)
 
     ret = readfile(DATAFILE, dataset, &datacount);
 
-    ret = naiveBayes(dataset, FIVE, FIVE, ONE, ONE, &results, datacount);
+    ret = naiveBayes(dataset, THREE, ONE, THREE, ONE, &results, datacount);
 
     printf("Left: %f Balanced: %f Right: %f \n",
                results.left, results.balance, results.right);
